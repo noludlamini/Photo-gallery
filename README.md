@@ -9,7 +9,6 @@ Email: nolublack@gmail.com
 # Demo
 View Live Demo
 
-(Replace # with your deployed site URL)
 
 # Features
 Responsive and mobile-friendly
