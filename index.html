@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Art Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Modern Art Gallery</h1>
+    <p>Contemporary expressions of form, color, and emotion</p>
+  </header>
+
+  <main class="gallery">
+    <div class="gallery-item" data-title="Minimalist Composition">
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=80" alt="Minimalist wall art display" />
+    </div>
+    <div class="gallery-item" data-title="Studio in Progress">
+      <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&w=1000&q=80" alt="Artist painting on canvas" />
+    </div>
+    <div class="gallery-item" data-title="Color Fields">
+      <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?auto=format&fit=crop&w=1000&q=80" alt="Colorful abstract modern painting" />
+    </div>
+    <div class="gallery-item" data-title="Gallery Interior">
+      <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1000&q=80" alt="Art gallery exhibition interior" />
+    </div>
+    <div class="gallery-item" data-title="Sculptural Form">
+      <img src="https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?auto=format&fit=crop&w=1000&q=80" alt="Sculpture art close-up" />
+    </div>
+    <div class="gallery-item" data-title="Watercolor Process">
+      <img src="https://images.unsplash.com/photo-1483794344563-d27a8d18014e?auto=format&fit=crop&w=1000&q=80" alt="Watercolor painting process" />
+    </div>
+    <div class="gallery-item" data-title="Geometric Balance">
+      <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&w=1000&q=80" alt="Modern art composition with geometric shapes" />
+    </div>
+    <div class="gallery-item" data-title="Contemporary Wall">
+      <img src="https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=1000&q=80" alt="Contemporary art gallery wall" />
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-image" alt="" />
+    <div class="lightbox-caption"></div>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('.lightbox-image');
+    const caption = lightbox.querySelector('.lightbox-caption');
+    const closeBtn = lightbox.querySelector('.close');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        lightboxImg.src = img.src;
+        caption.textContent = item.getAttribute('data-title');
+        lightbox.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
